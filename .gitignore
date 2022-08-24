@@ -353,5 +353,12 @@ MigrationBackup/
 
 # Ignore FTP Server "/ftpserver/files" directory
 /ftpserver/files/**
-# except for the .placeholder file, to ensure the directory gets created
+# except for the ".placeholder" file, to ensure the directory gets created
 !/ftpserver/files/.placeholder
+
+######## Custom - Pi-hole ########
+
+# Ignore files generated in the "/etc/pihole/" by Pi-hole
+/pihole/etc-pihole/**
+# except for the "custom.list" file
+!/pihole/etc-pihole/custom.list

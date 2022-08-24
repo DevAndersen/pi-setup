@@ -2,6 +2,9 @@ version: "3.9"
 services:
 
     ftpserver:
+        image: devandersen/pi-ftpserver:latest
+        container_name: pi-ftpserver
+        restart: unless-stopped
         environment:
             FTPSERVER_MASQUERADE_ADDRESS: $FTPSERVER_MASQUERADE_ADDRESS
             FTPSERVER_PASSIVEPORTS_FROM: $FTPSERVER_PASSIVEPORTS_FROM
@@ -12,9 +15,25 @@ services:
             args:
                 FTPSERVER_USERNAME: $FTPSERVER_USERNAME
                 FTPSERVER_PASSWORD: $FTPSERVER_PASSWORD
-#        restart: unless-stopped
         volumes:
             - './ftpserver/files/:/files/'
         ports:
             - "20-21:20-21"
             - "${FTPSERVER_PASSIVEPORTS_FROM}-${FTPSERVER_PASSIVEPORTS_TO}:${FTPSERVER_PASSIVEPORTS_FROM}-${FTPSERVER_PASSIVEPORTS_TO}"
+
+    pihole:
+        image: pihole/pihole:latest
+        container_name: pi-pihole
+        restart: unless-stopped
+        environment:
+            WEBPASSWORD: $PIHOLE_ADMIN_PASSWORD
+            WEB_PORT: $PIHOLE_ADMIN_PORT
+        volumes:
+            - "./pihole/etc-pihole/:/etc/pihole/"
+        ports:
+            - "53:53/tcp"
+            - "53:53/udp"
+            - "67:67/udp"
+            - "$PIHOLE_ADMIN_PORT:$PIHOLE_ADMIN_PORT/tcp"
+        cap_add:
+            - NET_ADMIN
