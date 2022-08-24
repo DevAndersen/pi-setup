@@ -348,3 +348,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+######## Custom - FTP server ########
+
+# Ignore FTP Server "/ftpserver/files" directory
+/ftpserver/files/**
+# except for the .placeholder file, to ensure the directory gets created
+!/ftpserver/files/.placeholder

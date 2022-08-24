@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+
+    ftpserver:
+        environment:
+            FTPSERVER_MASQUERADE_ADDRESS: $FTPSERVER_MASQUERADE_ADDRESS
+            FTPSERVER_PASSIVEPORTS_FROM: $FTPSERVER_PASSIVEPORTS_FROM
+            FTPSERVER_PASSIVEPORTS_TO: $FTPSERVER_PASSIVEPORTS_TO
+            FTPSERVER_USERNAME: $FTPSERVER_USERNAME
+        build:
+            dockerfile: ./ftpserver/Dockerfile
+            args:
+                FTPSERVER_USERNAME: $FTPSERVER_USERNAME
+                FTPSERVER_PASSWORD: $FTPSERVER_PASSWORD
+#        restart: unless-stopped
+        volumes:
+            - './ftpserver/files/:/files/'
+        ports:
+            - "20-21:20-21"
+            - "${FTPSERVER_PASSIVEPORTS_FROM}-${FTPSERVER_PASSIVEPORTS_TO}:${FTPSERVER_PASSIVEPORTS_FROM}-${FTPSERVER_PASSIVEPORTS_TO}"
