@@ -7,3 +7,7 @@ A simple FTP server, using [ProFTPD](http://www.proftpd.org/) running in an [Alp
 ## Pi-hole
 
 A [Pi-hole](https://pi-hole.net/) container, running with near-default settings. It also specifies custom DNS domain mappings, to make the site more easily accessible.
+
+## Site
+
+Frontend libraries, primarily [Bootstrap](https://getbootstrap.com/) and a few default ASP.NET MVC dependencies, are automatically downloaded using [LibMan](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/?view=aspnetcore-6.0).

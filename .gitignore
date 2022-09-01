@@ -362,3 +362,11 @@ MigrationBackup/
 /pihole/etc-pihole/**
 # except for the "custom.list" file
 !/pihole/etc-pihole/custom.list
+
+######## Custom - Site ########
+
+# Ignore CSS files, as these will be dynamically created using Sass
+**/wwwroot/css/**
+
+# Ignore frontend libraries, as these will be configured by LibMan
+**/wwwroot/lib/**
