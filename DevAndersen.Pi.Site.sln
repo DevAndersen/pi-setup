@@ -5,7 +5,29 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevAndersen.Pi.Site.Core", "site\DevAndersen.Pi.Site.Core\DevAndersen.Pi.Site.Core.csproj", "{7A2D7510-35DA-4598-8902-49DE061D0359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevAndersen.Pi.Site.Web", "site\DevAndersen.Pi.Site.Web\DevAndersen.Pi.Site.Web.csproj", "{FBCD4156-8846-4902-B3B0-BCD7D2153C90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevAndersen.Pi.Site.Web", "site\DevAndersen.Pi.Site.Web\DevAndersen.Pi.Site.Web.csproj", "{FBCD4156-8846-4902-B3B0-BCD7D2153C90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Site", "Site", "{1AAD10F1-BC71-447E-840D-7497D778F607}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pi-hole", "Pi-hole", "{93014A99-C674-4702-AA54-02878A48D040}"
+	ProjectSection(SolutionItems) = preProject
+		pihole\etc-pihole\custom.list = pihole\etc-pihole\custom.list
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FTP Server", "FTP Server", "{5E02B3C0-D6A4-418B-B560-A1539250CCFD}"
+	ProjectSection(SolutionItems) = preProject
+		ftpserver\Dockerfile = ftpserver\Dockerfile
+		ftpserver\proftpd.conf = ftpserver\proftpd.conf
+		ftpserver\setup.sh = ftpserver\setup.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{2BAA5CB3-2598-4519-B5ED-F862E5238AFA}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +46,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A2D7510-35DA-4598-8902-49DE061D0359} = {1AAD10F1-BC71-447E-840D-7497D778F607}
+		{FBCD4156-8846-4902-B3B0-BCD7D2153C90} = {1AAD10F1-BC71-447E-840D-7497D778F607}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBF43FA-FAD1-4B62-B852-BC9DAAA5146B}
