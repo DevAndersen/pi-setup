@@ -1,21 +1,29 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# Base
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS base
+WORKDIR "/work"
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
+# Frontend
+FROM base AS frontend
+COPY "./site/DevAndersen.Pi.Site.Web/libman.json" "."
+RUN apk add --no-cache sassc \
+ && dotnet tool install microsoft.web.librarymanager.cli --tool-path "/bin" \
+ && libman restore \
+ && mkdir "./wwwroot/css"
+COPY "./site/DevAndersen.Pi.Site.Web/wwwroot/scss/**" "./wwwroot/scss/"
+RUN sassc --style compressed "./wwwroot/scss/site.scss" "./wwwroot/css/site.min.css"
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["site/DevAndersen.Pi.Site.Web/DevAndersen.Pi.Site.Web.csproj", "site/DevAndersen.Pi.Site.Web/"]
-RUN dotnet restore "site/DevAndersen.Pi.Site.Web/DevAndersen.Pi.Site.Web.csproj"
-COPY . .
-WORKDIR "/src/site/DevAndersen.Pi.Site.Web"
-RUN dotnet build "DevAndersen.Pi.Site.Web.csproj" -c Release -o /app/build
+# Backend
+FROM base AS build
+COPY "./site/DevAndersen.Pi.Site.Core/DevAndersen.Pi.Site.Core.csproj" "./DevAndersen.Pi.Site.Core/"
+COPY "./site/DevAndersen.Pi.Site.Web/DevAndersen.Pi.Site.Web.csproj" "./DevAndersen.Pi.Site.Web/"
+RUN dotnet restore "./DevAndersen.Pi.Site.Core/DevAndersen.Pi.Site.Core.csproj" \
+ && dotnet restore "./DevAndersen.Pi.Site.Web/DevAndersen.Pi.Site.Web.csproj"
+COPY "./site" "./"
+RUN dotnet publish "./DevAndersen.Pi.Site.Web/" -c Release -o "./publish"
 
-FROM build AS publish
-RUN dotnet publish "DevAndersen.Pi.Site.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# Publish
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
+WORKDIR "/app"
+COPY --from=build "/work/publish" "."
+COPY --from=frontend "/work/wwwroot" "./wwwroot"
 ENTRYPOINT ["dotnet", "DevAndersen.Pi.Site.Web.dll"]

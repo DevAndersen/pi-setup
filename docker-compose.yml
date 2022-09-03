@@ -1,6 +1,15 @@
 version: "3.9"
 services:
 
+    site:
+        image: devandersen/site:latest
+        container_name: pi-site
+        restart: unless-stopped
+        build:
+            dockerfile: ./site/DevAndersen.Pi.Site.Web/Dockerfile
+        ports:
+            - "80:80"
+
     ftpserver:
         image: devandersen/pi-ftpserver:latest
         container_name: pi-ftpserver
