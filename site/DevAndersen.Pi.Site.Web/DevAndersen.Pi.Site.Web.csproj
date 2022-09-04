@@ -25,4 +25,8 @@
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DevAndersen.Pi.Site.Core\DevAndersen.Pi.Site.Core.csproj" />
+  </ItemGroup>
+
 </Project>

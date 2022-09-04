@@ -4,23 +4,14 @@ using System.Diagnostics;
 
 namespace DevAndersen.Pi.Site.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController : ViewController
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
     public IActionResult Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        return View(new HomeViewModel(new HomeButtonModel[]
+        {
+            CreateHomeViewModel<MediaController>(nameof(MediaController.Index), "Media", "bi-play-btn-fill", "#2d3e8c")
+        }));
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -30,5 +21,15 @@ public class HomeController : Controller
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         });
+    }
+
+    private static HomeButtonModel CreateHomeViewModel<TController>(string action, string text, string iconClass, string backgroundColor) where TController : Controller
+    {
+        return new HomeButtonModel(NameWithoutControllerSuffix<TController>(), action, text, iconClass, backgroundColor);
+    }
+
+    private static HomeButtonModel CreateHomeViewModel<TController>(Func<IActionResult> action, string text, string iconClass, string backgroundColor) where TController : Controller
+    {
+        return CreateHomeViewModel<TController>(action.Method.Name, text, iconClass, backgroundColor);
     }
 }

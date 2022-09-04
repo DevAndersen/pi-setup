@@ -1,0 +1,38 @@
+﻿@import "../lib/bootstrap/scss/_functions.scss";
+@import "../lib/bootstrap/scss/_variables.scss";
+@import "../lib/bootstrap/scss/mixins/_breakpoints.scss";
+
+/* Enable Bootstrap support for CSS grid */
+$enable-grid-classes: true;
+$enable-cssgrid: true;
+$grid-gutter-width: 12px;
+
+/* Create classes for CSS grid row span */
+@each $breakpoint in map-keys($grid-breakpoints)
+{
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints)
+    {
+        @if $grid-columns > 0
+        {
+
+            @for $spans from 1 through 4
+            {
+
+                .g-rowspan#{$infix}-#{$spans}
+                {
+                    grid-row: span #{$spans};
+                }
+
+                @for $start from 1 through 4
+                {
+                    .g-rowspan#{$infix}-#{$start}-#{$spans}
+                    {
+                        grid-row: #{$start} / span #{$spans};
+                    }
+                }
+            }
+        }
+    }
+}

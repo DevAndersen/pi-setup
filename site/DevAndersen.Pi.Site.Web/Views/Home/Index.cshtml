@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid d-flex flex-wrap justify-content-center">
+    @foreach (var item in Model.Buttons)
+    {
+        <div class="p-4 col-12 col-sm-4 col-xl-3 col-xxl-2">
+            <a asp-controller="@item.Controller" asp-action="@item.Action">
+                <div role="button" class="text-center p-2 d-block align-items-center pe-auto tile home-tile border-0 user-select-none" style="background-color: @item.BackgroundColor">
+                    <i class="fs-2 bi @item.IconClass"></i>
+                    <p class="fs-4">@item.Text</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>

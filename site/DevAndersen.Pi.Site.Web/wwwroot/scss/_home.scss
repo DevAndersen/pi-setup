@@ -1,0 +1,11 @@
+﻿.home-tile
+{
+    color: var(--pi-main-fg-color-home);
+}
+
+.home-tile:hover
+{
+    justify-content: center;
+    color: #ddd;
+    filter: brightness(120%);
+}
