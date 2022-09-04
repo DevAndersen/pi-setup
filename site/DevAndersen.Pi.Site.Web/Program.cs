@@ -1,9 +1,17 @@
-var builder = WebApplication.CreateBuilder(args);
+using DevAndersen.Pi.Site.Core;
+using DevAndersen.Pi.Site.Core.Services;
+using DevAndersen.Pi.Site.Core.Services.Abstractions;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IMediaService, MediaService>();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
+
+// Configure config configuration manager
+Config.Configuration = app.Services.GetService<IConfiguration>()!;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

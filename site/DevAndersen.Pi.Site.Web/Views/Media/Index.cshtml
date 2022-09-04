@@ -1,1 +1,31 @@
-﻿<p1>Placeholder</p1>
+﻿@using DevAndersen.Pi.Site.Core.Models
+@model IEnumerable<MediaModel>
+
+<div class="alert alert-success m-4" role="alert">
+    <div class="display-4">Path variable</div>
+    @DevAndersen.Pi.Site.Core.Config.Test
+</div>
+
+
+<div class="d-flex flex-wrap user-select-none">
+    @foreach (MediaModel item in Model)
+    {
+        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 p-3 text-truncate">
+            <a href="@item.Media">
+                <div class="tile media h-100 p-4 overflow-hidden" style="background-image: url('@item.Thumbnail')">
+                    @if (string.IsNullOrWhiteSpace(item.Thumbnail))
+                    {
+                        <div class="h-50 text-center row align-items-center">
+                            <i class="bi bi-film fs-1"></i>
+                        </div>
+                        <div class="align-bottom text-center">
+                            <div class="align-middle text-wrap text-truncate fs-5">@item.Media</div>
+                        </div>
+                    }
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="text-center pt-5">@Model.Count() items</div>
