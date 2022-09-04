@@ -1,17 +1,10 @@
-﻿@{
-    var items = new (string Text, string BackgroundColor, string IconClass)[]
-    {
-        ("Media", "#2d3e8c", "bi-play-btn-fill"),
-        ("File sharing", "#206138", "bi-folder-symlink-fill"),
-        ("Administration", "#a14369", "bi-gear-fill")
-    };
-}
+﻿@model HomeViewModel
 
 <div class="container-fluid d-flex flex-wrap justify-content-center">
-    @foreach (var item in items)
+    @foreach (var item in Model.Buttons)
     {
-        <div class="p-4 col-xxl-2 col-xl-3 col-sm-6 col-12">
-            <a asp-controller="" asp-action="">
+        <div class="p-4 col-12 col-sm-4 col-xl-3 col-xxl-2">
+            <a asp-controller="@item.Controller" asp-action="@item.Action">
                 <div role="button" class="text-center p-2 d-block align-items-center pe-auto tile home-tile border-0 user-select-none" style="background-color: @item.BackgroundColor">
                     <i class="fs-2 bi @item.IconClass"></i>
                     <p class="fs-4">@item.Text</p>
