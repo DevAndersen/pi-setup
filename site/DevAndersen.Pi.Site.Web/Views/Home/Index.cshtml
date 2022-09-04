@@ -1,8 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    var items = new (string Text, string BackgroundColor, string IconClass)[]
+    {
+        ("Media", "#2d3e8c", "bi-play-btn-fill"),
+        ("File sharing", "#206138", "bi-folder-symlink-fill"),
+        ("Administration", "#a14369", "bi-gear-fill")
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid d-flex flex-wrap justify-content-center">
+    @foreach (var item in items)
+    {
+        <div class="p-4 col-xxl-2 col-xl-3 col-sm-6 col-12">
+            <a asp-controller="" asp-action="">
+                <div role="button" class="text-center p-2 d-block align-items-center pe-auto tile home-tile border-0 user-select-none" style="background-color: @item.BackgroundColor">
+                    <i class="fs-2 bi @item.IconClass"></i>
+                    <p class="fs-4">@item.Text</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>

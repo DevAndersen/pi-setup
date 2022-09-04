@@ -1,0 +1,16 @@
+﻿.media
+{
+    aspect-ratio: 1/1.5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transition: transform 0.2s ease-in-out;
+}
+
+@media (min-width: 768px)
+{
+    .media:hover
+    {
+        transform: scale(1.05);
+    }
+}

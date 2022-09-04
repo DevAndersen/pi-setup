@@ -1,0 +1,75 @@
+﻿:root
+{
+    --pi-main-fg-color: #080808;
+    --pi-main-fg-color-home: #f3f4f6;
+    --pi-main-bg-color: #f3f4f6;
+    --pi-main-button-fg-color: #ccc;
+    --pi-tile-bg-color: #fff;
+    --pi-tile-border-color: #4444441c;
+}
+
+@media (prefers-color-scheme: dark)
+{
+    :root
+    {
+        --pi-main-fg-color: #f3f4f6;
+        --pi-main-fg-color-home: #f3f4f6;
+        --pi-main-bg-color: #313c41;
+        --pi-main-button-fg-color: #ccc;
+        --pi-tile-bg-color: #121212;
+        --pi-tile-border-color: #333;
+    }
+
+    .progress
+    {
+        background: #060606;
+    }
+}
+
+html
+{
+    font-size: 14px;
+}
+
+@media (min-width: 768px)
+{
+    html
+    {
+        font-size: 16px;
+    }
+}
+
+html
+{
+    position: relative;
+    min-height: 100%;
+    background: var(--pi-main-bg-color);
+}
+
+body
+{
+    margin-bottom: 60px;
+    color: var(--pi-main-fg-color);
+    background: var(--pi-main-bg-color);
+}
+
+
+a
+{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a:hover
+{
+    color: inherit;
+}
+
+.tile
+{
+    @extend .p-2;
+    @extend .rounded-3;
+    @extend .shadow-sm;
+    background: var(--pi-tile-bg-color);
+    border: 1px solid var(--pi-tile-border-color);
+}
