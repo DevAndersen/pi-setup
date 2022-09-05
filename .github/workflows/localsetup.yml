@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Test
-      run: sh ./run.sh
+      run: docker compose up --build -d
