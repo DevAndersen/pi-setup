@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Test
-      run: ./run.sh
+      run: sh ./run.sh
