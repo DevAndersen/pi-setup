@@ -2,7 +2,7 @@ name: Pull, update, and start local environment
 
 on:
   push:
-    branches: [ "main", "github-workflow" ]
+    branches: [ "main" ]
 
 jobs:
 
