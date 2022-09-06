@@ -1,0 +1,17 @@
+﻿.dashboard-title
+{
+    @extend .fs-4 !optional;
+    @extend .mb-2 !optional;
+    @extend .text-secondary !optional;
+    position: relative;
+    font-weight: bold;
+}
+
+.dashboard-icon
+{
+    @extend .fs-4 !optional;
+    @extend .text-success !optional;
+    left: 0;
+    top: 0;
+    position: absolute;
+}

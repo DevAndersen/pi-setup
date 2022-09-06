@@ -12,6 +12,7 @@ public class HomeController : ViewController
         return View(new HomeViewModel(new HomeButtonModel[]
         {
             CreateHomeViewModel<MediaController>(nameof(MediaController.Index), "Media", "bi-play-btn-fill", "#364aa8"),
+            CreateHomeViewModel<DashboardController>(nameof(DashboardController.Index), "Dashboard", "bi-grid-1x2-fill", "#773b90"),
             CreateHomeViewModel<HomeController>(PiHoleAdminRedirect, "Pi-hole", "bi-shield-fill-check", "#b04443")
         }));
     }

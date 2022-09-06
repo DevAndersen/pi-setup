@@ -1,7 +1,9 @@
-﻿@import "../lib/bootstrap/scss/bootstrap.scss";
-@import "../lib/bootstrap/scss/_variables.scss";
+﻿/* Enable Bootstrap support for CSS grid */
+$enable-grid-classes: true;
+$enable-cssgrid: true;
+$grid-gutter-width: 12px;
 
 @import "./_main.scss";
-@import "./_grid.scss";
 @import "./_home.scss";
 @import "./_media.scss";
+@import "./_dashboard.scss";

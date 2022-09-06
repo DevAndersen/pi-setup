@@ -1,0 +1,73 @@
+﻿@using DevAndersen.Pi.Site.Web.Models;
+@model DashboardViewModel
+
+<div class="grid mx-3">
+
+    <div class="tile g-col-lg-2 g-col-6 g-rowspan-lg-1-2 g-rowspan-1-2">
+        <div class="dashboard-title">
+            <i class="bi bi-x-diamond-fill dashboard-icon"></i>
+            <div class="text-center">Ceres</div>
+        </div>
+
+        <div class="grid">
+            <div class="g-col-4 fw-bold">OS</div>
+            <div class="g-col-8">Raspberry Pi OS</div>
+            <div class="g-col-4 fw-bold">Version</div>
+            <div class="g-col-8">20.04</div>
+            <div class="g-col-4 fw-bold">IPv4</div>
+            <div class="g-col-8">10.0.0.9</div>
+        </div>
+
+    </div>
+
+    <div class="tile g-col-lg-8 g-col-12 g-rowspan-lg-1-2 g-rowspan-3-1">
+        <div class="dashboard-title">
+            <i class="bi bi-device-hdd dashboard-icon"></i>
+            <div class="text-center">Storage</div>
+        </div>
+        <div class="grid">
+
+            <div class="g-col-5">/dev/sda1</div>
+            <div class="g-col-2 text-center">25%</div>
+            <div class="g-col-5 text-end">8 GB / 32 GB</div>
+
+            <div class="progress g-col-12">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 25%"></div>
+            </div>
+
+            <div class="g-col-5">/dev/sdb2</div>
+            <div class="g-col-2 text-center">47%</div>
+            <div class="g-col-5 text-end">97GB / 256GB</div>
+
+            <div class="progress g-col-12">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 47%"></div>
+            </div>
+
+            <div class="g-col-5">/dev/sdb1</div>
+            <div class="g-col-2 text-center">90%</div>
+            <div class="g-col-5 text-end">967MB / 1024MB</div>
+
+            <div class="progress g-col-12">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tile g-col-lg-2 g-col-6">
+        <div class="dashboard-title">
+            <i class="bi bi-cpu dashboard-icon"></i>
+            <div class="text-center">CPU</div>
+        </div>
+        <div class="fs-3 text-center text-secondary">20%</div>
+    </div>
+
+    <div class="tile g-col-lg-2 g-col-6">
+        <div class="dashboard-title">
+            <i class="bi bi-memory dashboard-icon"></i>
+            <div class="text-center">RAM</div>
+        </div>
+        <div class="fs-3 text-center text-secondary">60%</div>
+    </div>
+
+</div>

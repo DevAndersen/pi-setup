@@ -1,4 +1,8 @@
-﻿:root
+﻿@import "../lib/bootstrap/scss/bootstrap.scss";
+@import "../lib/bootstrap/scss/_variables.scss";
+@import "./_grid.scss";
+
+:root
 {
     --pi-main-fg-color: #080808;
     --pi-main-fg-color-home: #f3f4f6;
