@@ -6,7 +6,7 @@ services:
         container_name: pi-site
         restart: unless-stopped
         environment:
-            GENERAL_FTP_DOCKER_PATH: $GENERAL_FTP_DOCKER_PATH
+            SITE_FTP_ROOT: SITE_FTP_ROOT
         build:
             dockerfile: ./site/DevAndersen.Pi.Site.Web/Dockerfile
         ports:
