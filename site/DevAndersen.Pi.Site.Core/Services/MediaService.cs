@@ -49,7 +49,7 @@ public class MediaService : IMediaService
     {
         media = media.Replace(basePath, relativeFtpPath).Replace(@"\", "/");
         thumbnail = thumbnail.Replace(basePath, relativeThumbnailPath).Replace(@"\", "/");
-        return new MediaModel("ftp://" + media, thumbnail);
+        return new MediaModel("ftp://" + Config.LocalIpAddress + media, thumbnail);
     }
 
     private static bool TryGetMatchingFile(string[] fileNames, string[] extensions, out string? result)

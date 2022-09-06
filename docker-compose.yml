@@ -6,6 +6,7 @@ services:
         container_name: pi-site
         restart: unless-stopped
         environment:
+            GENERAL_LOCAL_IP_ADDRESS: $GENERAL_LOCAL_IP_ADDRESS
             SITE_FTP_ROOT: $SITE_FTP_ROOT
         build:
             dockerfile: ./site/DevAndersen.Pi.Site.Web/Dockerfile
@@ -19,7 +20,7 @@ services:
         container_name: pi-ftpserver
         restart: unless-stopped
         environment:
-            FTPSERVER_MASQUERADE_ADDRESS: $FTPSERVER_MASQUERADE_ADDRESS
+            GENERAL_LOCAL_IP_ADDRESS: $GENERAL_LOCAL_IP_ADDRESS
             FTPSERVER_PASSIVEPORTS_FROM: $FTPSERVER_PASSIVEPORTS_FROM
             FTPSERVER_PASSIVEPORTS_TO: $FTPSERVER_PASSIVEPORTS_TO
             FTPSERVER_USERNAME: $FTPSERVER_USERNAME
