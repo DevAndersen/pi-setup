@@ -1,4 +1,5 @@
-﻿using DevAndersen.Pi.Site.Web.Models;
+﻿using DevAndersen.Pi.Site.Core;
+using DevAndersen.Pi.Site.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -10,7 +11,8 @@ public class HomeController : ViewController
     {
         return View(new HomeViewModel(new HomeButtonModel[]
         {
-            CreateHomeViewModel<MediaController>(nameof(MediaController.Index), "Media", "bi-play-btn-fill", "#2d3e8c")
+            CreateHomeViewModel<MediaController>(nameof(MediaController.Index), "Media", "bi-play-btn-fill", "#364aa8"),
+            CreateHomeViewModel<HomeController>(PiHoleAdminRedirect, "Pi-hole", "bi-shield-fill-check", "#b04443")
         }));
     }
 
@@ -22,6 +24,8 @@ public class HomeController : ViewController
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         });
     }
+
+    public IActionResult PiHoleAdminRedirect() => Redirect($"http://{Config.LocalIpAddress}:{Config.PiholeAdminPort}");
 
     private static HomeButtonModel CreateHomeViewModel<TController>(string action, string text, string iconClass, string backgroundColor) where TController : Controller
     {

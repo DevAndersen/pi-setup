@@ -8,6 +8,7 @@ services:
         environment:
             GENERAL_LOCAL_IP_ADDRESS: $GENERAL_LOCAL_IP_ADDRESS
             SITE_FTP_ROOT: $SITE_FTP_ROOT
+            PIHOLE_ADMIN_PORT: $PIHOLE_ADMIN_PORT
         build:
             dockerfile: ./site/DevAndersen.Pi.Site.Web/Dockerfile
         ports:

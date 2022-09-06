@@ -9,4 +9,6 @@ public static class Config
     public static string FtpRoot => Configuration["SITE_FTP_ROOT"];
 
     public static string LocalIpAddress => Configuration["GENERAL_LOCAL_IP_ADDRESS"];
+
+    public static string PiholeAdminPort => Configuration["PIHOLE_ADMIN_PORT"];
 }
