@@ -6,5 +6,5 @@ public static class Config
 {
     public static IConfiguration Configuration { get; set; } = default!;
 
-    public static string Test => Configuration["path"];
+    public static string FtpPath => Configuration["GENERAL_FTP_DOCKER_PATH"];
 }

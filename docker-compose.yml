@@ -5,12 +5,14 @@ services:
         image: devandersen/site:latest
         container_name: pi-site
         restart: unless-stopped
+        environment:
+            GENERAL_FTP_DOCKER_PATH: $GENERAL_FTP_DOCKER_PATH
         build:
             dockerfile: ./site/DevAndersen.Pi.Site.Web/Dockerfile
         ports:
             - "80:80"
         volumes:
-            - "${GENERAL_FTP_ROOT}:/app/wwwroot/ftp"
+            - "${GENERAL_FTP_ROOT}:${GENERAL_FTP_DOCKER_PATH}"
 
     ftpserver:
         image: devandersen/pi-ftpserver:latest
