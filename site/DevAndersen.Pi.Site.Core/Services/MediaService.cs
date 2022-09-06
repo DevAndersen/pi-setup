@@ -8,8 +8,9 @@ public class MediaService : IMediaService
     private static readonly string[] thumbnailExtensions = new[] { ".png", ".jpg", ".jpeg", ".bmp", ".tiff" };
     private static readonly string[] mediaExtensions = new[] { ".m4v", ".mp4", ".avi", ".mov" };
 
-    private string basePath = Config.FtpPath;
-    private string relativePath = "/ftp";
+    private string basePath = Config.FtpRoot;
+    private string relativeThumbnailPath = "/ftp";
+    private string relativeFtpPath = string.Empty;
 
     public IEnumerable<MediaModel> GetMedia()
     {
@@ -46,9 +47,9 @@ public class MediaService : IMediaService
 
     private MediaModel CreateMediaModel(string media, string thumbnail)
     {
-        media = media.Replace(basePath, relativePath).Replace(@"\", "/");
-        thumbnail = thumbnail.Replace(basePath, relativePath).Replace(@"\", "/"); ;
-        return new MediaModel(media, thumbnail);
+        media = media.Replace(basePath, relativeFtpPath).Replace(@"\", "/");
+        thumbnail = thumbnail.Replace(basePath, relativeThumbnailPath).Replace(@"\", "/");
+        return new MediaModel("ftp://" + media, thumbnail);
     }
 
     private static bool TryGetMatchingFile(string[] fileNames, string[] extensions, out string? result)

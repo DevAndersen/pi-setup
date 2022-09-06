@@ -12,7 +12,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - "${GENERAL_FTP_ROOT}:${GENERAL_FTP_DOCKER_PATH}"
+            - "${GENERAL_FTP_ROOT}:${SITE_FTP_ROOT}"
 
     ftpserver:
         image: devandersen/pi-ftpserver:latest
