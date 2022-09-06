@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{2BAA
 		.env = .env
 		.gitignore = .gitignore
 		docker-compose.yml = docker-compose.yml
+		.github\workflows\localsetup.yml = .github\workflows\localsetup.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
