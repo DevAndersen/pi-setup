@@ -1,0 +1,13 @@
+name: Sync
+
+on:
+  push:
+    branches: [ "new-runner" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
