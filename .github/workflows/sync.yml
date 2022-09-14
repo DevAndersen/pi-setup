@@ -10,4 +10,5 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Run a one-line script
-        run: whoami >> output
+        working-directory: ~/pi-setup
+        run: pwd
