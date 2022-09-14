@@ -10,4 +10,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Run a one-line script
-        run: cd "$HOME/pi-setup" && sh ./setup.sh
+        run: cd "$HOME/pi-setup" && sh "$HOME/pi-setup/setup.sh"
